@@ -63,7 +63,13 @@ class ChatConsumer(AsyncConsumer):
             }
         )
 
-       
+        await self.channel_layer.group_send(
+            self.chat_room,
+            {
+                'type': 'chat_message',
+                'text': json.dumps(response)
+            }
+        )
 
 
 
