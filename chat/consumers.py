@@ -8,15 +8,6 @@ from chat.models import Thread, ChatMessage
 User = get_user_model()
 
 
-class ChatConsumer(AsyncConsumer):
-    async def websocket_connect(self, event):
-        print('connected', event)
-        user = self.scope['user']
-        chat_room = f'user_chatroom_{user.id}'
-        self.chat_room = chat_room
-        await self.channel_layer.group_add(
-            chat_room,
-            self.channel_name
         )
         await self.send({
             'type': 'websocket.accept'
