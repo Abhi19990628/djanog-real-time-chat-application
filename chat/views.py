@@ -12,3 +12,4 @@ def messages_page(request):
         'Threads': threads
     }
   
+ return render(request, 'massages.html', context)
